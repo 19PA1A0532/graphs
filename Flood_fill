@@ -1,0 +1,32 @@
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+        int n = image.length;
+        int m= image[0].length;
+        int currColor = image[sr][sc];
+        if(currColor!=newColor){
+            colorChange(image,sr,sc,currColor,newColor);
+        }
+        return image;
+        
+    }
+    public static void colorChange(int[][] image, int i, int j,int currColor, int newColor){
+        int n = image.length;
+        int m = image[0].length;
+        if(image[i][j] == currColor){
+            image[i][j] = newColor;
+            if(i>0){
+                colorChange(image,i-1,j,currColor,newColor);
+            }
+            if(i+1<n){
+                colorChange(image,i+1,j,currColor,newColor);
+            }
+            if(j>0){ 
+                colorChange(image,i,j-1,currColor,newColor);
+            }
+            if(j+1<m){
+                colorChange(image,i,j+1,currColor,newColor);
+            }
+        }
+        
+    }
+}
